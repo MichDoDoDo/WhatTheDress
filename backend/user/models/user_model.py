@@ -10,6 +10,7 @@ class User(Base):
     id: Mapped[UUID] = mapped_column(UUID, primary_key=True)
     username:Mapped[str] = mapped_column(String(20), unique= True, nullable=False)
     email: Mapped[str] = mapped_column(String (64),unique=True,nullable=False)
+    address: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[DateTime] = mapped_column(DateTime, default=datetime.now(timezone.utc), nullable=False)
     updated_at: Mapped[DateTime] = mapped_column(DateTime, default=datetime.now(timezone.utc), onupdate=datetime.now(timezone.utc))
     
