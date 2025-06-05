@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import DateTime, Integer, String
 from datetime import datetime, timezone 
-from core.database import Base
+from core.database import base
 from sqlalchemy.dialects.postgresql import ARRAY
 
 
-class Clothing(Base):
+class Clothing(base):
     __tablename__ = "clothing"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     category:Mapped[list[str]] = mapped_column(ARRAY(String),nullable=False)

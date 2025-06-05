@@ -19,3 +19,6 @@ class ClothingUpdate(BaseModel):
     
 class ClothingRead(ClothingBase):
     id: int
+    model_config = {
+        "from_attributes": True
+    }

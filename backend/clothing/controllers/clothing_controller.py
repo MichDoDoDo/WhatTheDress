@@ -1,8 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from clothing.models.clothing_model import Clothing
-from clothing.schemas.clothing_schema import ClothingSchema
-
-async def createClothes(db: AsyncSession, item: ClothingSchema ):
+from clothing.schemas.clothing_schema import ClothingCreate
+async def createClothes(db: AsyncSession, item: ClothingCreate ):
     add_item = Clothing(
         category = item.category,
         materials = item.material,

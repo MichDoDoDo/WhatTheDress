@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
-from clothing.schemas.clothing_schema import ClothingCreate
+from clothing.schemas.clothing_schema import ClothingCreate, ClothingRead, ClothingUpdate
 from sqlalchemy.ext.asyncio import AsyncSession
 from clothing.controllers.clothing_controller import createClothes
-from core.database import getDBSession
+from core.session import get_db
 clothing_router = APIRouter(prefix="/clothing")
 
 
-@clothing_router.post("/", response_model=ClothingCreate)
-def clothing_post( clothing = ClothingSchema, db:AsyncSession=Depends(getDBSession)):
-    return createClothes(db, clothing)
+@clothing_router.post("/", response_model=ClothingRead)
+async def clothing_post( clothing: ClothingCreate, db:AsyncSession=Depends(get_db)):
+    return await createClothes(db, clothing)
